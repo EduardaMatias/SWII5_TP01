@@ -25,6 +25,12 @@ public class SaveServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String country = request.getParameter("country");
 
+		if (name == "" || password == "" || email == "" || country == "") {
+			out.println("<script>alert('Por favor, preencha todos os campos');</script>");
+			out.println("<script>setTimeout(function(){ window.location.href = 'index.html'; }, 1000);</script>");
+			return;
+		}
+
 		Emp e = new Emp();
 		e.setName(name);
 		e.setPassword(password);
@@ -33,10 +39,11 @@ public class SaveServlet extends HttpServlet {
 
 		int status = EmpDao.save(e);
 		if (status > 0) {
-			out.print("<p>Record saved successfully!</p>");
+			out.println("<script>alert('Registro salvo com sucesso!');</script>");
 			request.getRequestDispatcher("index.html").include(request, response);
 		} else {
-			out.println("Sorry! unable to save record");
+			out.println("<script>alert('Não foi possível salvar registro');</script>");
+			out.println("<script>setTimeout(function(){ window.location.href = 'index.html'; }, 1000);</script>");
 		}
 
 		out.close();

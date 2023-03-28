@@ -50,7 +50,7 @@ public class EmpDao {
 		try {
 			Connection con = EmpDao.getConnection();
 			PreparedStatement ps = con
-					.prepareStatement("UPDATE funcionario SET password = ?, email = ?, country = ? WHERE id = ?;");
+					.prepareStatement("UPDATE funcionario SET name = ?, password = ?, email = ?, country = ? WHERE id = ?;");
 			ps.setString(1, e.getName());
 			ps.setString(2, e.getPassword());
 			ps.setString(3, e.getEmail());
