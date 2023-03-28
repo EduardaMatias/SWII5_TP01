@@ -40,7 +40,7 @@ public class SaveServlet extends HttpServlet {
 		int status = EmpDao.save(e);
 		if (status > 0) {
 			out.println("<script>alert('Registro salvo com sucesso!');</script>");
-			request.getRequestDispatcher("index.html").include(request, response);
+			out.println("<script>setTimeout(function(){ window.location.href = 'index.html'; }, 1000);</script>");
 		} else {
 			out.println("<script>alert('Não foi possível salvar registro');</script>");
 			out.println("<script>setTimeout(function(){ window.location.href = 'index.html'; }, 1000);</script>");
